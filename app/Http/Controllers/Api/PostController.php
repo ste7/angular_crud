@@ -12,9 +12,7 @@ class PostController extends Controller
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
     public function index() {
-        return response([
-            'posts' => Post::all()
-        ], 200);
+        return response(Post::all(), 200);
     }
 
     /**
@@ -22,9 +20,7 @@ class PostController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function show(Post $post) {
-        return response()->json([
-            'post' => $post->load('user')
-        ], 200);
+        return response()->json($post->load('user'), 200);
     }
 
     /**
@@ -32,7 +28,7 @@ class PostController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(CreatePostRequest $request) {
-        $post = Post::create($request->all());
+        $post = Post::create(array_merge(['user_id' => 1], $request->all()));
 
         return response()->json([
             'post' => $post

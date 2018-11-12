@@ -1,0 +1,13 @@
+.card-post {
+    width: 200px;
+    float: left;
+    margin: 10px;
+}
+
+.card-content {
+    height: 200px;
+}
+
+.content {
+    overflow-x: hidden;
+}
